@@ -74,6 +74,7 @@ class CollectionModel {
   }
 
   // Remover uma coleção
+  // Teste Edu
   async delete(id) {
     const colecao = await this.findById(id);
 

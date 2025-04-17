@@ -104,20 +104,20 @@ class CollectionController {
   async deleteCollection(req, res) {
     try {
       const { id } = req.params;
-
+  
       // Remover a coleção
       const result = await CollectionModel.delete(id);
-
-      if (!result) {
+  
+      // Verifica se algum registro foi deletado
+      if (result === 0 || !result) {
         return res.status(404).json({ error: "Coleção não encontrada" });
       }
-
-      res.status(204).end(); // Resposta sem conteúdo
+  
+      res.status(200).json({ message: "Coleção deletada com sucesso" });
     } catch (error) {
       console.error("Erro ao remover coleção:", error);
       res.status(500).json({ error: "Erro ao remover coleção" });
     }
   }
 }
-
 export default new CollectionController();

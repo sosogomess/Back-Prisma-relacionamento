@@ -31,12 +31,13 @@ class CollectionController {
     }
   }
 
-  // POST /api/colecoes
+  // POST /colecoes
   async createCollection(req, res) {
     try {
       // Validação básica
       const {
         name,
+        description,
         releaseYear,
       } = req.body;
 
@@ -54,6 +55,7 @@ class CollectionController {
       // Criar uma nova coleção
       const newCollection = await CollectionModel.create(
         name,
+        description,
         releaseYear,
       
       );
